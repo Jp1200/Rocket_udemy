@@ -8,6 +8,7 @@ public class RocketBehavior : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource audioS;
     [SerializeField] float rcsThrust = 65f;
+    [SerializeField] float mnmThrust = 30f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,10 @@ public class RocketBehavior : MonoBehaviour
     }
     private void Thrust()
     {
+        float thrustForce = Time.deltaTime * mnmThrust;
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidBody.AddRelativeForce(Vector3.up);
+            rigidBody.AddRelativeForce(Vector3.up * thrustForce);
             if (!audioS.isPlaying) {
                 audioS.Play();
                 print(audioS);
