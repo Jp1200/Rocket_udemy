@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class RocketBehavior : MonoBehaviour
 {
+    Rigidbody rigidBody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -20,10 +21,14 @@ public class RocketBehavior : MonoBehaviour
     private void ProcessInput()
     {
         if (Input.GetKey(KeyCode.Space))
-        { print("Space being pressed"); }
-        else if (Input.GetKey(KeyCode.A))
-        { print("Rotating Left"); }
+        { rigidBody.AddRelativeForce(Vector3.up); }
+        if (Input.GetKey(KeyCode.A))
+        {
+            //rotation = rigidBody * Time.deltaTime;
+            transform.Rotate(Vector3.forward * Time.deltaTime);
+        }
+       
         else if (Input.GetKey(KeyCode.D))
-        { print("Rotating Right"); }
+        { transform.Rotate(-Vector3.forward * Time.deltaTime); }
     }
 }
