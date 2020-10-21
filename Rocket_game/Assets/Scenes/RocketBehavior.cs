@@ -25,10 +25,10 @@ public class RocketBehavior : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             //rotation = rigidBody * Time.deltaTime;
-            transform.Rotate(Vector3.forward * Time.deltaTime);
+            transform.Rotate(Vector3.forward );
         }
        
         else if (Input.GetKey(KeyCode.D))
-        { transform.Rotate(-Vector3.forward * Time.deltaTime); }
+        { transform.Rotate(-Vector3.forward ); }
     }
 }
